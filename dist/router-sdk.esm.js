@@ -26,7 +26,6 @@ var ZERO = /*#__PURE__*/ JSBI.BigInt(0)
 var ONE = /*#__PURE__*/ JSBI.BigInt(1)
 
 var ApprovalTypes
-
 ;(function (ApprovalTypes) {
   ApprovalTypes[(ApprovalTypes['NOT_REQUIRED'] = 0)] = 'NOT_REQUIRED'
   ApprovalTypes[(ApprovalTypes['MAX'] = 1)] = 'MAX'
@@ -837,7 +836,6 @@ function _createForOfIteratorHelperLoose(o, allowArrayLike) {
 }
 
 var Protocol
-
 ;(function (Protocol) {
   Protocol['V2'] = 'V2'
   Protocol['V3'] = 'V3'
