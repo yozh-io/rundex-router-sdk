@@ -28,7 +28,7 @@ export class Trade<TInput extends Currency, TOutput extends Currency, TTradeType
     v3Routes,
     tradeType,
     factoryAddress,
-    initCodeHash,
+    initCodeHash
   }: {
     v2Routes: {
       routev2: V2RouteSDK<TInput, TOutput>
@@ -265,7 +265,7 @@ export class Trade<TInput extends Currency, TOutput extends Currency, TTradeType
       v3Routes: populatedV3Routes,
       tradeType,
       factoryAddress,
-      initCodeHash,
+      initCodeHash
     })
   }
 
@@ -304,7 +304,7 @@ export class Trade<TInput extends Currency, TOutput extends Currency, TTradeType
       v3Routes,
       tradeType,
       factoryAddress,
-      initCodeHash,
+      initCodeHash
     })
   }
 }
