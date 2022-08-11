@@ -13,8 +13,8 @@ import {
 } from '@uniswap/v3-sdk'
 import { Pair, Route as V2RouteSDK } from '@uniswap/v2-sdk'
 
-const factoryAddress = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f';
-const initCodeHash ='0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f';
+const factoryAddress = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
+const initCodeHash = '0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f'
 
 describe('Trade', () => {
   const ETHER = Ether.onChain(1)
@@ -129,9 +129,7 @@ describe('Trade', () => {
       const tradeType = TradeType.EXACT_INPUT
       const expectedOut = await pool_0_1.getOutputAmount(amount)
 
-      const trade = await Trade.fromRoute(route, amount, tradeType,
-        factoryAddress,
-        initCodeHash)
+      const trade = await Trade.fromRoute(route, amount, tradeType, factoryAddress, initCodeHash)
       expect(trade.inputAmount.currency).toEqual(token0)
       expect(trade.outputAmount.currency).toEqual(token1)
       expect(trade.inputAmount).toEqual(amount)
@@ -149,9 +147,7 @@ describe('Trade', () => {
       const tradeType = TradeType.EXACT_OUTPUT
       const expectedIn = pair_0_1.getInputAmount(amount)[0]
 
-      const trade = await Trade.fromRoute(route, amount, tradeType,
-        factoryAddress,
-        initCodeHash)
+      const trade = await Trade.fromRoute(route, amount, tradeType, factoryAddress, initCodeHash)
       expect(trade.inputAmount.currency).toEqual(token0)
       expect(trade.outputAmount.currency).toEqual(token1)
       expect(trade.outputAmount).toEqual(amount)
@@ -166,9 +162,7 @@ describe('Trade', () => {
       const route = new RouteV3(routeOriginal)
       const amount = CurrencyAmount.fromRawAmount(ETHER, JSBI.BigInt(10))
 
-      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_INPUT,
-        factoryAddress,
-        initCodeHash)
+      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_INPUT, factoryAddress, initCodeHash)
       expect(trade.inputAmount.currency).toEqual(ETHER)
       expect(trade.outputAmount.currency).toEqual(token0)
     })
@@ -178,9 +172,7 @@ describe('Trade', () => {
       const route = new RouteV3(routeOriginal)
       const amount = CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(100))
 
-      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_OUTPUT,
-        factoryAddress,
-        initCodeHash)
+      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_OUTPUT, factoryAddress, initCodeHash)
       expect(trade.inputAmount.currency).toEqual(ETHER)
       expect(trade.outputAmount.currency).toEqual(token0)
     })
@@ -190,9 +182,7 @@ describe('Trade', () => {
       const route = new RouteV3(routeOriginal)
       const amount = CurrencyAmount.fromRawAmount(ETHER, JSBI.BigInt(100))
       const expectedIn = await pool_weth_0.getInputAmount(amount.wrapped)
-      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_OUTPUT,
-        factoryAddress,
-        initCodeHash)
+      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_OUTPUT, factoryAddress, initCodeHash)
       expect(trade.inputAmount.currency).toEqual(token0)
       expect(trade.outputAmount.currency).toEqual(ETHER)
       expect(trade.outputAmount).toEqual(amount)
@@ -204,9 +194,7 @@ describe('Trade', () => {
       const route = new RouteV3(routeOriginal)
       const amount = CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(100))
       const expectedOut = await pool_weth_0.getOutputAmount(amount)
-      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_INPUT,
-        factoryAddress,
-        initCodeHash)
+      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_INPUT, factoryAddress, initCodeHash)
       expect(trade.inputAmount.currency).toEqual(token0)
       expect(trade.outputAmount.currency).toEqual(ETHER)
       expect(trade.inputAmount).toEqual(amount)
@@ -218,9 +206,7 @@ describe('Trade', () => {
       const route = new RouteV2(routeOriginal)
       const amount = CurrencyAmount.fromRawAmount(ETHER, JSBI.BigInt(10))
 
-      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_INPUT,
-        factoryAddress,
-        initCodeHash)
+      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_INPUT, factoryAddress, initCodeHash)
       expect(trade.inputAmount.currency).toEqual(ETHER)
       expect(trade.outputAmount.currency).toEqual(token2)
     })
@@ -230,9 +216,7 @@ describe('Trade', () => {
       const route = new RouteV2(routeOriginal)
       const amount = CurrencyAmount.fromRawAmount(token2, JSBI.BigInt(100))
 
-      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_OUTPUT,
-        factoryAddress,
-        initCodeHash)
+      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_OUTPUT, factoryAddress, initCodeHash)
       expect(trade.inputAmount.currency).toEqual(ETHER)
       expect(trade.outputAmount.currency).toEqual(token2)
     })
@@ -242,9 +226,7 @@ describe('Trade', () => {
       const route = new RouteV2(routeOriginal)
       const amount = CurrencyAmount.fromRawAmount(ETHER, JSBI.BigInt(100))
 
-      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_OUTPUT,
-        factoryAddress,
-        initCodeHash)
+      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_OUTPUT, factoryAddress, initCodeHash)
       expect(trade.inputAmount.currency).toEqual(token2)
       expect(trade.outputAmount.currency).toEqual(ETHER)
     })
@@ -254,9 +236,7 @@ describe('Trade', () => {
       const route = new RouteV2(routeOriginal)
       const amount = CurrencyAmount.fromRawAmount(token2, JSBI.BigInt(100))
 
-      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_INPUT,
-        factoryAddress,
-        initCodeHash)
+      const trade = await Trade.fromRoute(route, amount, TradeType.EXACT_INPUT, factoryAddress, initCodeHash)
       expect(trade.inputAmount.currency).toEqual(token2)
       expect(trade.outputAmount.currency).toEqual(ETHER)
     })
@@ -266,9 +246,9 @@ describe('Trade', () => {
       const route = new RouteV2(routeOriginal)
       const amount = CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(100))
 
-      await expect(Trade.fromRoute(route, amount, TradeType.EXACT_INPUT,
-        factoryAddress,
-        initCodeHash)).rejects.toThrow('INPUT')
+      await expect(Trade.fromRoute(route, amount, TradeType.EXACT_INPUT, factoryAddress, initCodeHash)).rejects.toThrow(
+        'INPUT'
+      )
     })
 
     it('throws if output currency does not match for V2 Route', async () => {
@@ -276,9 +256,9 @@ describe('Trade', () => {
       const route = new RouteV2(routeOriginal)
       const amount = CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(100))
 
-      await expect(Trade.fromRoute(route, amount, TradeType.EXACT_OUTPUT,
-        factoryAddress,
-        initCodeHash)).rejects.toThrow('OUTPUT')
+      await expect(
+        Trade.fromRoute(route, amount, TradeType.EXACT_OUTPUT, factoryAddress, initCodeHash)
+      ).rejects.toThrow('OUTPUT')
     })
     it('throws if input currency does not match for V3 route', async () => {
       const routeOriginal = new V3RouteSDK([pool_0_1], token0, token1)
@@ -287,9 +267,7 @@ describe('Trade', () => {
       const amount = CurrencyAmount.fromRawAmount(token2, JSBI.BigInt(1000))
       const tradeType = TradeType.EXACT_INPUT
 
-      await expect(Trade.fromRoute(route, amount, tradeType,
-        factoryAddress,
-        initCodeHash)).rejects.toThrow('INPUT')
+      await expect(Trade.fromRoute(route, amount, tradeType, factoryAddress, initCodeHash)).rejects.toThrow('INPUT')
     })
 
     it('throws if output currency does not match for V3 route', async () => {
@@ -298,9 +276,7 @@ describe('Trade', () => {
 
       const amount = CurrencyAmount.fromRawAmount(token2, JSBI.BigInt(1000))
       const tradeType = TradeType.EXACT_OUTPUT
-      await expect(Trade.fromRoute(route, amount, tradeType,
-        factoryAddress,
-        initCodeHash)).rejects.toThrow('OUTPUT')
+      await expect(Trade.fromRoute(route, amount, tradeType, factoryAddress, initCodeHash)).rejects.toThrow('OUTPUT')
     })
   })
 
@@ -557,9 +533,13 @@ describe('Trade', () => {
       const amountv3 = CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(1000))
 
       await expect(
-        Trade.fromRoutes([{ routev2, amount: amountv2 }], [{ routev3, amount: amountv3 }], TradeType.EXACT_INPUT,
+        Trade.fromRoutes(
+          [{ routev2, amount: amountv2 }],
+          [{ routev3, amount: amountv3 }],
+          TradeType.EXACT_INPUT,
           factoryAddress,
-          initCodeHash)
+          initCodeHash
+        )
       ).rejects.toThrow('INPUT_CURRENCY_MATCH')
     })
 
@@ -573,9 +553,13 @@ describe('Trade', () => {
       const amountv3 = CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(1000))
 
       await expect(
-        Trade.fromRoutes([{ routev2, amount: amountv2 }], [{ routev3, amount: amountv3 }], TradeType.EXACT_INPUT,
+        Trade.fromRoutes(
+          [{ routev2, amount: amountv2 }],
+          [{ routev3, amount: amountv3 }],
+          TradeType.EXACT_INPUT,
           factoryAddress,
-          initCodeHash)
+          initCodeHash
+        )
       ).rejects.toThrow('OUTPUT_CURRENCY_MATCH')
     })
   })
@@ -593,7 +577,7 @@ describe('Trade', () => {
         v3Routes: [{ routev3, inputAmount, outputAmount }],
         tradeType,
         factoryAddress,
-        initCodeHash
+        initCodeHash,
       })
 
       const exactInMultiRoute = new Trade({
@@ -612,7 +596,7 @@ describe('Trade', () => {
         ],
         tradeType: TradeType.EXACT_INPUT,
         factoryAddress,
-        initCodeHash
+        initCodeHash,
       })
 
       it('throws if less than 0', () => {
@@ -647,7 +631,7 @@ describe('Trade', () => {
         ],
         tradeType: TradeType.EXACT_OUTPUT,
         factoryAddress,
-        initCodeHash
+        initCodeHash,
       })
 
       const exactOutMultiRoute = new Trade({
@@ -666,7 +650,7 @@ describe('Trade', () => {
         ],
         tradeType: TradeType.EXACT_OUTPUT,
         factoryAddress,
-        initCodeHash
+        initCodeHash,
       })
 
       it('throws if less than 0', () => {
@@ -718,7 +702,7 @@ describe('Trade', () => {
         ],
         tradeType: TradeType.EXACT_INPUT,
         factoryAddress,
-        initCodeHash
+        initCodeHash,
       })
       it('throws if less than 0', () => {
         expect(() => exactIn.worstExecutionPrice(new Percent(-1, 100))).toThrow('SLIPPAGE_TOLERANCE')
@@ -753,7 +737,7 @@ describe('Trade', () => {
         ],
         tradeType: TradeType.EXACT_OUTPUT,
         factoryAddress,
-        initCodeHash
+        initCodeHash,
       })
       it('throws if less than 0', () => {
         expect(() => exactOut.worstExecutionPrice(new Percent(-1, 100))).toThrow('SLIPPAGE_TOLERANCE')
@@ -783,7 +767,7 @@ describe('Trade', () => {
         v3Routes: [{ routev3, inputAmount, outputAmount }],
         tradeType,
         factoryAddress,
-        initCodeHash
+        initCodeHash,
       })
 
       it('throws if less than 0', () => {
@@ -815,7 +799,7 @@ describe('Trade', () => {
           v3Routes: [{ routev3, inputAmount, outputAmount }],
           tradeType,
           factoryAddress,
-          initCodeHash
+          initCodeHash,
         })
 
         it('throws if less than 0', () => {
@@ -849,7 +833,7 @@ describe('Trade', () => {
         v3Routes: [{ routev3, inputAmount, outputAmount }],
         tradeType,
         factoryAddress,
-        initCodeHash
+        initCodeHash,
       })
 
       it('throws if less than 0', () => {
@@ -878,7 +862,7 @@ describe('Trade', () => {
           v3Routes: [{ routev3, inputAmount, outputAmount }],
           tradeType,
           factoryAddress,
-          initCodeHash
+          initCodeHash,
         })
 
         it('throws if less than 0', () => {
@@ -916,7 +900,7 @@ describe('Trade', () => {
         ],
         tradeType: TradeType.EXACT_INPUT,
         factoryAddress,
-        initCodeHash
+        initCodeHash,
       })
 
       it('is cached', () => {
@@ -939,7 +923,7 @@ describe('Trade', () => {
         ],
         tradeType: TradeType.EXACT_OUTPUT,
         factoryAddress,
-        initCodeHash
+        initCodeHash,
       })
 
       it('is cached', () => {
