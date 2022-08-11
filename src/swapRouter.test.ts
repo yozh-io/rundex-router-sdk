@@ -15,6 +15,9 @@ import JSBI from 'jsbi'
 import { SwapRouter, Trade } from '.'
 import { ApprovalTypes } from './approveAndCall'
 
+const factoryAddress = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'
+const initCodeHash = '0x96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f'
+
 describe('SwapRouter', () => {
   const ETHER = Ether.onChain(1)
   const WETH = WETH9[1]
@@ -47,7 +50,7 @@ describe('SwapRouter', () => {
     const amount0 = CurrencyAmount.fromRawAmount(token0, JSBI.BigInt(liquidity))
     const amount1 = CurrencyAmount.fromRawAmount(token1, JSBI.BigInt(liquidity))
 
-    return new Pair(amount0, amount1)
+    return new Pair(amount0, amount1, factoryAddress, initCodeHash)
   }
 
   const pool_0_1 = makePool(token0, token1, liquidity)
@@ -95,7 +98,9 @@ describe('SwapRouter', () => {
                 amount: amountIn,
               },
             ],
-            TradeType.EXACT_INPUT
+            TradeType.EXACT_INPUT,
+            factoryAddress,
+            initCodeHash
           )
 
           const { calldata, value } = SwapRouter.swapCallParameters(trades, {
@@ -143,7 +148,9 @@ describe('SwapRouter', () => {
                 amount: amountOut,
               },
             ],
-            TradeType.EXACT_OUTPUT
+            TradeType.EXACT_OUTPUT,
+            factoryAddress,
+            initCodeHash
           )
 
           const { calldata, value } = SwapRouter.swapCallParameters(trades, {
@@ -195,7 +202,9 @@ describe('SwapRouter', () => {
                 amount: amountIn,
               },
             ],
-            TradeType.EXACT_INPUT
+            TradeType.EXACT_INPUT,
+            factoryAddress,
+            initCodeHash
           )
 
           const { calldata, value } = SwapRouter.swapCallParameters(trades, {
@@ -247,7 +256,9 @@ describe('SwapRouter', () => {
                 amount: amountOut,
               },
             ],
-            TradeType.EXACT_OUTPUT
+            TradeType.EXACT_OUTPUT,
+            factoryAddress,
+            initCodeHash
           )
 
           const { calldata, value } = SwapRouter.swapCallParameters(trades, {
@@ -296,7 +307,9 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
-              TradeType.EXACT_INPUT
+              TradeType.EXACT_INPUT,
+              factoryAddress,
+              initCodeHash
             )
 
             const { calldata, value } = SwapRouter.swapCallParameters(trades, {
@@ -348,7 +361,9 @@ describe('SwapRouter', () => {
                   amount: amountOut,
                 },
               ],
-              TradeType.EXACT_OUTPUT
+              TradeType.EXACT_OUTPUT,
+              factoryAddress,
+              initCodeHash
             )
 
             const { calldata, value } = SwapRouter.swapCallParameters(trades, {
@@ -400,7 +415,9 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
-              TradeType.EXACT_INPUT
+              TradeType.EXACT_INPUT,
+              factoryAddress,
+              initCodeHash
             )
 
             const { calldata, value } = SwapRouter.swapCallParameters(trades, {
@@ -452,7 +469,9 @@ describe('SwapRouter', () => {
                   amount: amountOut,
                 },
               ],
-              TradeType.EXACT_OUTPUT
+              TradeType.EXACT_OUTPUT,
+              factoryAddress,
+              initCodeHash
             )
 
             const { calldata, value } = SwapRouter.swapCallParameters(trades, {
@@ -556,7 +575,9 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
-              TradeType.EXACT_INPUT
+              TradeType.EXACT_INPUT,
+              factoryAddress,
+              initCodeHash
             )
 
             const { calldata, value } = SwapRouter.swapCallParameters(trades, {
@@ -608,7 +629,9 @@ describe('SwapRouter', () => {
                   amount: amountOut,
                 },
               ],
-              TradeType.EXACT_OUTPUT
+              TradeType.EXACT_OUTPUT,
+              factoryAddress,
+              initCodeHash
             )
 
             const { calldata, value } = SwapRouter.swapCallParameters(trades, {
@@ -660,7 +683,9 @@ describe('SwapRouter', () => {
                   amount: amountIn,
                 },
               ],
-              TradeType.EXACT_INPUT
+              TradeType.EXACT_INPUT,
+              factoryAddress,
+              initCodeHash
             )
 
             const { calldata, value } = SwapRouter.swapCallParameters(trades, {
@@ -712,7 +737,9 @@ describe('SwapRouter', () => {
                   amount: amountOut,
                 },
               ],
-              TradeType.EXACT_OUTPUT
+              TradeType.EXACT_OUTPUT,
+              factoryAddress,
+              initCodeHash
             )
 
             const { calldata, value } = SwapRouter.swapCallParameters(trades, {
